@@ -41,32 +41,98 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6y0-EL-qdj">
-                                <rect key="frame" x="20" y="64" width="560" height="492"/>
+                                <rect key="frame" x="20" y="64" width="560" height="322"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9JZ-hP-MZe">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="492"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="322"/>
                                         <animations/>
                                     </imageView>
                                 </subviews>
                                 <animations/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="9JZ-hP-MZe" secondAttribute="bottom" id="0tN-aN-8p5"/>
                                     <constraint firstItem="9JZ-hP-MZe" firstAttribute="centerX" secondItem="6y0-EL-qdj" secondAttribute="centerX" id="4GA-HY-d4O"/>
                                     <constraint firstItem="9JZ-hP-MZe" firstAttribute="leading" secondItem="6y0-EL-qdj" secondAttribute="leading" id="NZT-cr-PP1"/>
                                     <constraint firstItem="9JZ-hP-MZe" firstAttribute="centerY" secondItem="6y0-EL-qdj" secondAttribute="centerY" id="fpg-30-1J2"/>
                                     <constraint firstItem="9JZ-hP-MZe" firstAttribute="top" secondItem="6y0-EL-qdj" secondAttribute="top" id="jBI-gT-Jpr"/>
-                                    <constraint firstAttribute="bottom" secondItem="9JZ-hP-MZe" secondAttribute="bottom" id="pYZ-5b-jXp"/>
                                     <constraint firstAttribute="trailing" secondItem="9JZ-hP-MZe" secondAttribute="trailing" id="skB-Ot-OhP"/>
                                 </constraints>
                             </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ppX-YR-wKP">
+                                <rect key="frame" x="20" y="386" width="560" height="170"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="JDD-ef-kkw"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9oc-5A-uwG">
+                                    <size key="itemSize" width="128" height="169.5"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PreviewCellReuseID" id="cXs-xW-WHf" customClass="PreviewCollectionViewCell" customModule="CameraApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ovx-vd-cWJ">
+                                                    <rect key="frame" x="0.0" y="8" width="128" height="128"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="128" id="3sM-XE-gvP"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="Ovx-vd-cWJ" firstAttribute="width" secondItem="cXs-xW-WHf" secondAttribute="width" id="HHC-6R-WIe"/>
+                                            <constraint firstItem="Ovx-vd-cWJ" firstAttribute="leading" secondItem="cXs-xW-WHf" secondAttribute="leadingMargin" id="HQ4-o7-C18"/>
+                                            <constraint firstItem="Ovx-vd-cWJ" firstAttribute="top" secondItem="cXs-xW-WHf" secondAttribute="topMargin" id="Ksg-Fl-Fv5"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Ovx-vd-cWJ" secondAttribute="bottom" id="gRv-ZP-k5V"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Ovx-vd-cWJ" secondAttribute="trailing" id="oNA-yG-v1f"/>
+                                            <constraint firstItem="Ovx-vd-cWJ" firstAttribute="centerX" secondItem="cXs-xW-WHf" secondAttribute="centerX" id="sG9-mC-vur"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="HQ4-o7-C18"/>
+                                                <exclude reference="gRv-ZP-k5V"/>
+                                                <exclude reference="oNA-yG-v1f"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="previewImageView" destination="Ovx-vd-cWJ" id="nwj-hZ-DmD"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="6GW-Ll-KWu" id="lQE-YT-SoZ"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ppX-YR-wKP" secondAttribute="trailing" id="0Ux-F3-zNr"/>
+                            <constraint firstItem="ppX-YR-wKP" firstAttribute="leading" secondItem="H4Y-VC-cIy" secondAttribute="leadingMargin" id="1ED-xg-S5b"/>
+                            <constraint firstItem="ppX-YR-wKP" firstAttribute="top" secondItem="9JZ-hP-MZe" secondAttribute="bottom" id="7ii-e5-HaS"/>
                             <constraint firstItem="6y0-EL-qdj" firstAttribute="top" secondItem="8c9-Vu-lsE" secondAttribute="bottom" id="A9K-DG-5xS"/>
-                            <constraint firstItem="Ixh-YQ-5BK" firstAttribute="top" secondItem="6y0-EL-qdj" secondAttribute="bottom" id="Eok-Az-Q4M"/>
+                            <constraint firstItem="Ixh-YQ-5BK" firstAttribute="top" secondItem="ppX-YR-wKP" secondAttribute="bottom" id="En5-rH-gHp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6y0-EL-qdj" secondAttribute="trailing" id="FSd-dI-Izt"/>
                             <constraint firstItem="6y0-EL-qdj" firstAttribute="leading" secondItem="H4Y-VC-cIy" secondAttribute="leadingMargin" id="OUG-hD-NoT"/>
+                            <constraint firstItem="ppX-YR-wKP" firstAttribute="top" secondItem="6y0-EL-qdj" secondAttribute="bottom" id="zoL-Uo-zuP"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7ii-e5-HaS"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems>
                         <barButtonItem systemItem="action" id="7yc-K0-Jug">
@@ -90,6 +156,7 @@
                     <navigationItem key="navigationItem" id="wg4-ZI-rvk"/>
                     <connections>
                         <outlet property="displayImageView" destination="9JZ-hP-MZe" id="aad-xg-prQ"/>
+                        <outlet property="previewCollectionView" destination="ppX-YR-wKP" id="HzE-br-T9z"/>
                         <outlet property="scrollView" destination="6y0-EL-qdj" id="QVl-Hu-Zb8"/>
                     </connections>
                 </viewController>

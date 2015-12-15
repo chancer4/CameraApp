@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,6 +16,36 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         gesture.numberOfTapsRequired = 2
         self.scrollView.addGestureRecognizer(gesture)
         self.scrollView.delegate = self
+        self.imageStore = [UIImage]()
+        self.previewCollectionView.alpha = 0.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let image = self.imageStore![indexPath.item]
+        
+        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PreviewCellReuseID", forIndexPath: indexPath) as? PreviewCollectionViewCell else {
+                
+            return UICollectionViewCell()
+
+            
+        }
+        
+        cell.previewImageView.image = image
+        
+        return cell
+        
+    }
+    
+    func collectionView(collecionView: UICollectionView, numberOfItemsInSection section: Int) ->Int {
+        
+        return self.imageStore.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let image = self.imageStore[indexPath.item]
+        
+        self.displayImageView.image = image
+        
     }
     
     private var currentZoom : CGFloat = 1.0
@@ -38,10 +68,18 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         return self.displayImageView
     }
     
+    @IBOutlet weak var previewCollectionView: UICollectionView!
+    @IBOutlet weak var previewImageView: UIImageView!
+    
+    private var imageStore : [UIImage]!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage,
         editingInfo: [String : AnyObject]?) {
             self.displayImageView.image = image
+            self.imageStore.insert(image, atIndex: 0)
+            self.previewCollectionView.reloadData()
+            self.previewCollectionView.alpha = 1.0
             picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
